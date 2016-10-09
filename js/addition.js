@@ -14,6 +14,15 @@ var generateNumbers = function() {
     document.getElementById('plus').innerHTML = '&#43;';
     document.getElementById('equal').innerHTML = '=';
     document.getElementById('start-button').hidden = true;
+
+    var possibilities = {0: 'guess-one', 1: 'guess-two', 2: 'guess-three',
+    3: 'guess-four'};
+
+    for (var guess in possibilities) {
+        document.getElementById(possibilities[guess]).style.border =
+        '1px solid black'
+    }
+
     return x + y;
 }
 
