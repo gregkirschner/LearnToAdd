@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Addition</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/addition_style.css">
+    <script src="js/addition.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <ul class="nav-list">
+        <li class="nav-list-item">
+            <a class="nav-list-link" href="addition.html">Home</a>
+        </li>
+        <li class="nav-list-item">
+            <a class="nav-list-link" href="addition.html">Contact</a>
+        </li>
+        <li class="nav-list-item">
+            <a class="nav-list-link" href="addition.html">About Greg Kirschner</a>
+        </li>
+    </ul>
+</nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-uppercase text-center">Learn to Add</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h2 class="main-app-content" id="addition-space">
+                    <button onclick="generateAnswers()" id="start-button">Let's start!</button>
+                    <span class="numbers">
+                        <span id="number-first"></span>
+                        <span id="plus"></span>
+                        <span id="number-second"></span>
+                        <span id="equal"></span>
+                    </span>
+                </h2>
+            </div>
+        </div>
+        <hr>
+        <div class="row guesses text-center main-app-content">
+            <div class= "col-md-2 col-md-offset-4 col-sm-offset-3 col-sm-3 col-xs-4 col-xs-offset-2 guess-box" id="guess-one"></div>
+            <div class="col-md-2 col-sm-3 col-xs-4 guess-box" id="guess-two"></div>
+        </div>
+        <div class="row guesses text-center main-app-content">
+            <div class="col-md-2 col-md-offset-4 col-sm-offset-3 col-sm-3 col-xs-4 col-xs-offset-2 guess-box" id="guess-three"></div>
+            <div class="col-md-2 col-sm-3 col-xs-4 guess-box" id="guess-four"></div>
+        </div>
+
+    </div>
+</body>
+</html>
