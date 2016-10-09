@@ -1,0 +1,51 @@
+body {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+}
+
+.nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.nav-list-item {
+    float: left;
+}
+
+.nav-list-link {
+    display: block;
+    color: #fff;
+    text-align: center;
+    padding: 14px 16px;
+}
+
+.nav-list-link:hover {
+    background-color: #111;
+    color: #fff;
+}
+
+.container {
+    margin: 10px;
+}
+
+.main-app-content {
+    font-size: 45px;
+}
+
+.numbers {
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.guesses {
+    color: #506484;
+}
+
+.guess-box {
+    border: 1px solid black;
+}
+
+
