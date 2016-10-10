@@ -138,6 +138,7 @@ var generateAnswers = function() {
     }
     document.getElementById('nextQuestionButton').innerHTML = '';
     document.getElementById('congrats-message').innerHTML = '';
+    textColorReset();
 }
 
 var wrong = function(wrongElement) {
@@ -147,14 +148,17 @@ var wrong = function(wrongElement) {
     document.getElementById(wrongElement).style.backgroundColor = '#efb3b3';
 }
 
-var correctAnswer = function() {
+var textColorReset = function() {
     var possibilities = {0: 'guess-one', 1: 'guess-two', 2: 'guess-three',
     3: 'guess-four'};
 
     for (var guess in possibilities) {
-        document.getElementById(possibilities[guess]).style.backgroundColor = '#fff'
+        document.getElementById(possibilities[guess]).style.backgroundColor = '#fff';
+        document.getElementById(possibilities[guess]).style.color = '#506484';
     }
+}
 
+var correctAnswer = function() {
     congratsMessage();
     nextQuestion();
 }
@@ -173,3 +177,5 @@ var nextQuestion = function() {
     document.getElementById('nextQuestionButton').innerHTML =
     '<button onclick="generateAnswers()">Click here for next problem</button>'
 }
+
+//TODO: Fix coloring after wrong, then right answers
