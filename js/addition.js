@@ -136,6 +136,8 @@ var generateAnswers = function() {
             document.getElementById('guess-one').innerHTML = wrongTwo;
         }
     }
+    document.getElementById('nextQuestionButton').innerHTML = '';
+    document.getElementById('congrats-message').innerHTML = '';
 }
 
 var wrong = function(wrongElement) {
@@ -153,6 +155,21 @@ var correctAnswer = function() {
         document.getElementById(possibilities[guess]).style.backgroundColor = '#fff'
     }
 
-    generateAnswers();
+    congratsMessage();
+    nextQuestion();
+}
 
+var congratsMessage = function() {
+    var messages = {1: "Nice job!", 2: "Great!", 3: "Awesome!", 4: "Very good!",
+5: "That's right!", 6: "Excellent work!", 7: "Well done!", 8: "Fantastic!"}
+
+    var randomMsgIndex = Math.floor(Math.random() * 8 + 1);
+    var randomMsg = messages[randomMsgIndex];
+
+    document.getElementById('congrats-message').innerHTML = messages[randomMsgIndex];
+}
+
+var nextQuestion = function() {
+    document.getElementById('nextQuestionButton').innerHTML =
+    '<button onclick="generateAnswers()">Click here for next problem</button>'
 }
