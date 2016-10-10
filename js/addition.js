@@ -229,7 +229,7 @@ var congratsMessage = function() {
 
 var nextQuestion = function() {
     var newHtml = '<button onclick="generateAnswers(' + mode +
-    ')">Click here for next problem</button>'
+    ')">Next Problem</button>'
     document.getElementById('nextQuestionButton').innerHTML = newHtml;
     console.log(newHtml);
     console.log(mode);

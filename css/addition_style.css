@@ -46,13 +46,14 @@ body {
 }
 
 .next-button-row {
-    margin: 15px;
+    margin: 25px;
+    font-size: 25px;
 }
 
 .congratulations-row {
     align-items: center;
     justify-content: center;
-    margin: 10px;
+    margin: 5px;
 }
 
 .congratulations {
