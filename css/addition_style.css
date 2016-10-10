@@ -43,3 +43,18 @@ body {
 .guesses {
     color: #506484;
 }
+
+.next-button-row {
+    margin: 15px;
+}
+
+.congratulations-row {
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.congratulations {
+    font-size: 25px;
+    color: #134eb5;
+}
