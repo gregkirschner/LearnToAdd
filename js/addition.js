@@ -55,7 +55,8 @@ var generateAnswers = function() {
 
     if (locateCorrect < 0.25) {
         document.getElementById('guess-one').innerHTML = correct;
-        document.getElementById('guess-one').onclick = function() {correctAnswer()};
+        document.getElementById('guess-one').onclick = function() {
+            correctAnswer('guess-one')};
         document.getElementById('guess-two').onclick = function() {wrong('guess-two')};
         document.getElementById('guess-three').onclick = function() {
             wrong('guess-three')};
@@ -76,7 +77,8 @@ var generateAnswers = function() {
         }
     } else if (locateCorrect >= 0.25 && locateCorrect < 0.5) {
         document.getElementById('guess-two').innerHTML = correct;
-        document.getElementById('guess-two').onclick = function() {correctAnswer()};
+        document.getElementById('guess-two').onclick = function() {
+            correctAnswer('guess-two')};
         document.getElementById('guess-one').onclick = function() {wrong('guess-one')};
         document.getElementById('guess-three').onclick = function() {
             wrong('guess-three')};
@@ -97,7 +99,8 @@ var generateAnswers = function() {
         }
     } else if (locateCorrect >= 0.5 && locateCorrect < 0.75) {
         document.getElementById('guess-three').innerHTML = correct;
-        document.getElementById('guess-three').onclick = function() {correctAnswer()};
+        document.getElementById('guess-three').onclick = function() {
+            correctAnswer('guess-three')};
         document.getElementById('guess-two').onclick = function() {wrong('guess-two')};
         document.getElementById('guess-one').onclick = function() {wrong('guess-one')};
         document.getElementById('guess-four').onclick = function() {
@@ -117,7 +120,8 @@ var generateAnswers = function() {
         }
     } else {
         document.getElementById('guess-four').innerHTML = correct;
-        document.getElementById('guess-four').onclick = function() {correctAnswer()};
+        document.getElementById('guess-four').onclick = function() {
+            correctAnswer('guess-four')};
         document.getElementById('guess-two').onclick = function() {wrong('guess-two')};
         document.getElementById('guess-three').onclick = function() {
             wrong('guess-three')};
@@ -158,7 +162,9 @@ var textColorReset = function() {
     }
 }
 
-var correctAnswer = function() {
+var correctAnswer = function(correctElement) {
+    document.getElementById(correctElement).style.color = '#137f31';
+    document.getElementById(correctElement).style.backgroundColor = '#a4f2ba';
     congratsMessage();
     nextQuestion();
 }
