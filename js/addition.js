@@ -1,4 +1,8 @@
-var randomNumber = function() {
+var answeredCorrectState = false;
+
+var correctStreak = 0;
+
+var randomNumber = function(minNum,MaxNum) {
     return Math.floor(Math.random() * 10 + 1);
 }
 
@@ -27,6 +31,7 @@ var generateNumbers = function() {
 }
 
 var generateAnswers = function() {
+    answeredCorrectState = false;
     var correct = generateNumbers();
     var locateCorrect = randomDecimal();
     var locateWrong = randomDecimal();
@@ -146,10 +151,13 @@ var generateAnswers = function() {
 }
 
 var wrong = function(wrongElement) {
-    var wrong = document.getElementById(wrongElement).innerHTML;
-    var redWrong = wrong.fontcolor('red');
-    document.getElementById(wrongElement).innerHTML = redWrong;
-    document.getElementById(wrongElement).style.backgroundColor = '#efb3b3';
+    if (answeredCorrectState == false) {
+        var wrong = document.getElementById(wrongElement).innerHTML;
+        var redWrong = wrong.fontcolor('red');
+        document.getElementById(wrongElement).innerHTML = redWrong;
+        document.getElementById(wrongElement).style.backgroundColor = '#efb3b3';
+        correctStreak = 0;
+    }
 }
 
 var textColorReset = function() {
@@ -165,8 +173,19 @@ var textColorReset = function() {
 var correctAnswer = function(correctElement) {
     document.getElementById(correctElement).style.color = '#137f31';
     document.getElementById(correctElement).style.backgroundColor = '#a4f2ba';
-    congratsMessage();
+    if (answeredCorrectState == false) {
+        congratsMessage();
+        correctStreak ++;
+    }
+
+    if (correctStreak == 5) {
+        alert("Nice job, that's five in a row!");
+    } else if (correctStreak == 10) {
+        alert("Wow, that's ten in a row! Very impressive!");
+    }
+
     nextQuestion();
+    answeredCorrectState = true;
 }
 
 var congratsMessage = function() {
