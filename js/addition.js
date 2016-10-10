@@ -2,17 +2,17 @@ var answeredCorrectState = false;
 
 var correctStreak = 0;
 
-var randomNumber = function(minNum,MaxNum) {
-    return Math.floor(Math.random() * 10 + 1);
+var randomNumber = function(minNum, maxNum) {
+    return Math.floor(Math.random() * maxNum + minNum);
 }
 
 var randomDecimal = function() {
     return Math.random();
 }
 
-var generateNumbers = function() {
-    var x = randomNumber();
-    var y = randomNumber();
+var generateNumbers = function(minNum, maxNum) {
+    var x = randomNumber(minNum, maxNum);
+    var y = randomNumber(minNum, maxNum);
     document.getElementById('number-first').innerHTML = x;
     document.getElementById('number-second').innerHTML = y;
     document.getElementById('plus').innerHTML = '&#43;';
@@ -30,9 +30,23 @@ var generateNumbers = function() {
     return x + y;
 }
 
-var generateAnswers = function() {
+var mode = 0;  //0-Default (#'s 1-6), 1 (1-10), 2 (5-25), 3 (10-100)
+
+var generateAnswers = function(mode) {
     answeredCorrectState = false;
-    var correct = generateNumbers();
+    var correct;
+    if (mode == 1) {
+        correct = generateNumbers(1,10);
+    } else if (mode == 0) {
+        correct = generateNumbers(1,6);
+    } else if (mode = 2) {
+        correct = generateNumbers(5, 25);
+    } else if (mode = 3) {
+        correct = generateNumbers(10,100);
+    } else {
+        correct = generateNumbers(1,10);
+    }
+
     var locateCorrect = randomDecimal();
     var locateWrong = randomDecimal();
     var randomWrong = randomDecimal();
@@ -174,14 +188,8 @@ var correctAnswer = function(correctElement) {
     document.getElementById(correctElement).style.color = '#137f31';
     document.getElementById(correctElement).style.backgroundColor = '#a4f2ba';
     if (answeredCorrectState == false) {
-        congratsMessage();
         correctStreak ++;
-    }
-
-    if (correctStreak == 5) {
-        alert("Nice job, that's five in a row!");
-    } else if (correctStreak == 10) {
-        alert("Wow, that's ten in a row! Very impressive!");
+        congratsMessage();
     }
 
     nextQuestion();
@@ -195,12 +203,36 @@ var congratsMessage = function() {
     var randomMsgIndex = Math.floor(Math.random() * 8 + 1);
     var randomMsg = messages[randomMsgIndex];
 
-    document.getElementById('congrats-message').innerHTML = messages[randomMsgIndex];
+    switch (correctStreak) {
+        case 5:
+            document.getElementById('congrats-message').innerHTML =
+            "Nice, that's five in a row!";
+            break;
+        case 10:
+            document.getElementById('congrats-message').innerHTML =
+            "Impressive, that's ten in a row!";
+            break;
+        case 20:
+            document.getElementById('congrats-message').innerHTML =
+            "Incredible, that's twenty in a row";
+            break;
+        case 50:
+            document.getElementById('congrats-message').innerHTML =
+            "Impossible, that's fifty in a row!";
+            break;
+        default:
+            document.getElementById('congrats-message').innerHTML =
+            messages[randomMsgIndex];
+    }
+
 }
 
 var nextQuestion = function() {
-    document.getElementById('nextQuestionButton').innerHTML =
-    '<button onclick="generateAnswers()">Click here for next problem</button>'
+    var newHtml = '<button onclick="generateAnswers(' + mode +
+    ')">Click here for next problem</button>'
+    document.getElementById('nextQuestionButton').innerHTML = newHtml;
+    console.log(newHtml);
+    console.log(mode);
 }
 
 //TODO: Fix coloring after wrong, then right answers
